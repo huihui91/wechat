@@ -11,6 +11,7 @@
     </div>
 </template>
 <script>
+  import {mapActions} from 'vuex'
   export default{
     data(){
       return{
@@ -32,9 +33,12 @@
       }
     },
     methods:{
+      ...mapActions(['setUserInfo']),
       loginBtn(){
         if(!this.userName||!this.userAvatar) return ;
+        this.setUserInfo({name:this.userName,avatar:this.userAvatar});
         this.$router.push('/wechat')
+
       },
       selectAvatar(item,index){
         this.userAvatar=item.path;

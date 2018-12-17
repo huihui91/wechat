@@ -8,6 +8,13 @@ export default new Vuex.Store({
     userName:null,
     userAvatar:null
   },
+  getters:{
+    doneUser: state => {
+      return { name: state.userName,
+               avatar: state.userAvatar
+              }
+    }
+  },
   mutations: {
     setUserInfo(state,data){
       state.userName = data.name;
@@ -15,6 +22,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-
+    setUserInfo(context,data){
+      context.commit('setUserInfo',data)
+    }
   }
 })
