@@ -20,7 +20,7 @@ io.on('connection', function (socket) {
       socket.emit('loginError')
     }else{
       userData.push(data);
-      socket.username = data.username;
+      socket.username = data.name;
       socket.avatar = data.avatar;
       //登录成功
       socket.emit('loginSuccess',data);
@@ -34,6 +34,7 @@ io.on('connection', function (socket) {
   //监听聊天信息
    socket.on('chatMessage',data=>{
      //广播信息
+     console.log(socket.username)
      io.emit('receiveMeaage', { type: 'chat_text', value: data, name: socket.username, avatar: socket.avatar})
    })
 

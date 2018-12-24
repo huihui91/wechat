@@ -30,9 +30,9 @@
             </p>
           </div>
           <!-- 自己的消息 -->
-          <div class="message-box" v-show="item.name == this.doneUser.name ">
+          <div class="message-box" v-show="item.name == doneUser.name ">
             <div class="my message">
-              <img class="avatar" :src="this.userAvatar" alt="" />
+              <img class="avatar" :src="userAvatar" alt="" />
               <div class="content">
                 <div class="bubble">
                   <!---->
@@ -42,7 +42,7 @@
             </div>
           </div>
           <!-- 别人的消息 -->
-          <div class="message-box" v-show="item.name != this.userName">
+          <div class="message-box" v-show="item.name != userName">
             <div class="other message">
               <img class="avatar" :src="item.avatar" alt="" />
               <div class="content">
@@ -152,7 +152,8 @@ export default {
    },
    //发送聊天信息
    sendMessage(){
-     this.socket.emit('chatMessage',this.textValue)
+     this.socket.emit('chatMessage',this.textValue);
+     this.textValue='';
    },
    //发送图片
    sendImg(data){
